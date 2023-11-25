@@ -1,4 +1,6 @@
-import { Button } from "@material-tailwind/react";
+
+import { Outlet } from "react-router-dom";
+import { NavbarDefault } from "../shared/Navbar";
  
 // export default function Example() {
 //   return <Button>Button</Button>;
@@ -7,7 +9,8 @@ import { Button } from "@material-tailwind/react";
 const Root = () => {
     return (
         <div>
-           <Button>Button</Button> 
+            <NavbarDefault></NavbarDefault>
+          <Outlet></Outlet>
         </div>
     );
 };
