@@ -7,14 +7,13 @@ import router from "./routes/Routes.jsx";
 import { ThemeProvider } from "@material-tailwind/react";
 import AuthProvide from "./provider/AuthProvider";
 
+
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <div className="max-w-7xl mx-auto">
-      <AuthProvide>
+    <AuthProvide>
         <ThemeProvider>
           <RouterProvider router={router} />
         </ThemeProvider>
-      </AuthProvide>
-    </div>
+    </AuthProvide>
   </React.StrictMode>
 );
