@@ -61,7 +61,7 @@ export function NavbarDefault() {
           href="#"
           className="mr-4 cursor-pointer py-1.5 font-medium"
         >
-          Material Tailwind
+          <span className="bg-red-700  text-white text-xl px-4 rounded-tl rounded-bl py-2">J</span><span className="bg-red-400  text-white text-xl px-4 py-2">U</span><span className="bg-orange-700  text-white text-xl px-4 py-2">I</span><span className="bg-orange-400   text-white text-xl px-4 py-2  rounded-tr rounded-br">T</span>
         </Typography>
         <div className="hidden lg:block">{navList}</div>
         <div className="flex items-center gap-x-1">

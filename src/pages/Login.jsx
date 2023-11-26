@@ -1,6 +1,6 @@
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
-import loginImg from "../assets/image/loinlogo.jpg";
+import loginImg from "../assets/loginLogo/login.gif";
 import {
   AiOutlineEye,
   AiOutlineEyeInvisible,
@@ -32,7 +32,7 @@ const Login = () => {
     .catch(error=>setError(setError(error.message)))
   };
   return (
-    <div className="md:flex md:flex-row-reverse justify-center items-center min-h-screen bg-gradient-to-r from-cyan-300 to-green-200">
+    <div className="md:flex md:flex-row-reverse justify-center items-center min-h-screen">
       <div className="md:w-1/2 flex justify-center">
         <img src={loginImg} alt="" />
       </div>
