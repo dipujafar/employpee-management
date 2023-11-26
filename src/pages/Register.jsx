@@ -9,12 +9,16 @@ import { AiOutlineEyeInvisible, AiOutlineEye } from "react-icons/ai";
 import { useState } from "react";
 import { Button } from "@material-tailwind/react";
 import useAuth from "../hook/useAuth";
+import useAxiosPublic from "../hook/useAxiosPublic";
+import axios from "axios";
 
-
+const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
+const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
 const Register = () => {
     const [show, setShow] = useState(false);
     const {createUser} = useAuth();
-    const [error,setError] = useState('')
+    const [error,setError] = useState('');
+    const axiosPublic = useAxiosPublic();
 
     const {
         register,
@@ -23,21 +27,28 @@ const Register = () => {
         formState: { errors },
       } = useForm();
 
-      const onSubmit = (data) => {
-       const {name, email, password, account, salary,} = data || {};
+      const onSubmit = async (data) => {
+       const {name, email, password, account, salary, image} = data || {};
+        const imageFile = image[0];
+       
 
+        // const res = await axios.post(image_hosting_api, imageFile,{
+        //   headers:{
+        //     "content-type": "multipart/form-data",
+        //   }
+        // });
+
+        // console.log(res.data);
        createUser(email,password)
        .then(result=>{
         console.log(result.user)
        })
        .catch(error=>setError(error.message))
-       
-
       }
     return (
-      <div className="bg-gradient-to-r  bg-opacity-0 from-green-100">
-        <div className=" bg-transparent bg-opacity-0">
-        <div className="md:w-1/2 mx-auto border  rounded shadow-md shadow-gray-300 p-5">
+      <div className="bg-gradient-to-r from-cyan-300 to-green-200">
+        <div>
+        <div className="md:w-1/2 bg-white mx-auto border rounded shadow-xl shadow-gray-300 p-5">
           <h1 className="text-2xl font-medium mb-5 text-center text-orange-400">
             Register Now
           </h1>
@@ -73,7 +84,7 @@ const Register = () => {
               </label>
               <input
                 type={show ? "text" : "password"}
-                {...register("password", { required: true, minLength: 6, maxLength: 20, pattern:/^[A-Z][!@#$%^&*()_+{}\[\]:;<>,.?~\\/-]/ })}
+                {...register("password", { required: true, minLength: 6, maxLength: 20})}
                 placeholder="Password*"
                 className="w-3/4 mx-auto py-1 px-2 bg-transparent border-b border-b-orange-400"
               />
@@ -88,7 +99,7 @@ const Register = () => {
             {errors.password?.type === "required" && <span className="text-red-400 ml-10">Password is required</span>}
             {errors.password?.type === "minLength" && <span className="text-red-400 ml-10">Password must be 6 character.</span>}
             {errors.password?.type === "maxLength" && <span className="text-red-400 ml-10">Password must less then 20 character.</span>}
-            {errors.password?.type === "pattern" && <span className="text-red-400 ml-10">Password must need a capital letter and a special character.</span>}
+            {/* {errors.password?.type === "pattern" && <span className="text-red-400 ml-10">Password must need a capital letter and a special character.</span>} */}
             
             <div className="flex items-center mb-5 ">
               <label>
@@ -149,7 +160,7 @@ const Register = () => {
 
             <div className="my-3">
               <label className="font-bold block mt-2">Your Profile Picture</label>
-              <input type="file" name="" id="" />
+              <input  type="file" name=""  {...register("image")}id="" />
             </div>
 
             <Button variant="outlined" className="w-full">
@@ -162,7 +173,7 @@ const Register = () => {
             <p className="mt-2">
               Already have account?{" "}
               <Link to="/login">
-                <span className="text-blue-300">Login</span>
+                <span className="text-blue-500">Login</span>
               </Link>
             </p>
             <p className="text-xl text-red-700">{error}</p>
