@@ -14,7 +14,7 @@ import {
   Button,
 } from "@material-tailwind/react";
 
-import { EffectCoverflow, Pagination } from "swiper/modules";
+import { EffectCoverflow, Pagination, Autoplay } from "swiper/modules";
 import SectionTitle from "../../Components/SectionTitle";
 
 const Testimonial = () => {
@@ -34,6 +34,10 @@ const Testimonial = () => {
         grabCursor={true}
         centeredSlides={true}
         slidesPerView={"auto"}
+        autoplay={{
+            delay: 2500,
+            disableOnInteraction: true,
+          }}
         coverflowEffect={{
           rotate: 50,
           stretch: 0,
@@ -42,7 +46,7 @@ const Testimonial = () => {
           slideShadows: true,
         }}
         pagination={true}
-        modules={[EffectCoverflow, Pagination]}
+        modules={[EffectCoverflow, Pagination,Autoplay]}
         className="mySwiper"
       >
         {reviews.map((review, inx) => (

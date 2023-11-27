@@ -27,7 +27,6 @@ const Services = () => {
           "JUIT offers top-notch services in web and app development, graphic design, desktop software, and SEO. Elevate your digital presence with our expert solutions tailored to your unique needs."
         }
       ></SectionTitle>
-      
       <div className=" grid md:grid-cols-3 gap-5"  data-aos="fade-up"
      data-aos-duration="2000">
         {
