@@ -1,11 +1,9 @@
+import PropTypes from 'prop-types';
 import {
   Card,
   CardHeader,
   CardBody,
-  CardFooter,
   Typography,
-  Avatar,
-  Tooltip,
 } from "@material-tailwind/react";
   
 
@@ -35,6 +33,10 @@ const ServiceCard = ({service}) => {
       </CardBody>
     </Card>
     );
+};
+
+ServiceCard.propTypes = {
+  service: PropTypes.object,
 };
 
 export default ServiceCard;

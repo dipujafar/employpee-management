@@ -2,6 +2,7 @@ import About from "./About";
 import HomeBanner from "./HomeBanner";
 import OurProcess from "./OurProcess";
 import Services from "./Services";
+import Testimonial from "./Testimonial";
 
 
 
@@ -14,6 +15,7 @@ const Home = () => {
             <Services></Services>
             <About></About>
             <OurProcess></OurProcess>
+            <Testimonial></Testimonial>
         </div>
     );
 };
