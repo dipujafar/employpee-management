@@ -6,12 +6,13 @@ import appDev from '../../assets/services/AppDev.jpg'
 import webDev from '../../assets/services/webdevelopment.jpg'
 import graphicDeg from '../../assets/services/ghapicDesign.jpg'
 import desktopDev from '../../assets/services/desktop.jpg'
+import SEORank from '../../assets/services/SEO.jpg'
 
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 
 const HomeBanner = () => {
     return (
-        <div className='max-h-32'>
+        <div>
               <Swiper
         spaceBetween={30}
         centeredSlides={true}
@@ -30,6 +31,7 @@ const HomeBanner = () => {
         <SwiperSlide><img src={appDev} alt="" className='w-full max-h-[500px]'/></SwiperSlide>
         <SwiperSlide><img src={desktopDev} alt="" className='w-full max-h-[500px]'/></SwiperSlide>
         <SwiperSlide><img src={graphicDeg} alt="" className='w-full max-h-[500px]'/></SwiperSlide>
+        <SwiperSlide><img src={SEORank} alt="" className='w-full max-h-[500px]'/></SwiperSlide>
       </Swiper>
         </div>
     );
