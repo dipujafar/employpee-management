@@ -1,5 +1,4 @@
 import { useQuery } from "@tanstack/react-query";
-import axios from "axios";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/effect-coverflow";
@@ -16,12 +15,14 @@ import {
 
 import { EffectCoverflow, Pagination, Autoplay } from "swiper/modules";
 import SectionTitle from "../../Components/SectionTitle";
+import useAxiosPublic from "../../hook/useAxiosPublic";
 
 const Testimonial = () => {
+  const axiosPublic = useAxiosPublic();
   const { data: reviews = [] } = useQuery({
     queryKey: ["review"],
     queryFn: async () => {
-      const res = await axios.get("review.json");
+      const res = await axiosPublic.get("review.json");
       return res.data;
     },
   });
