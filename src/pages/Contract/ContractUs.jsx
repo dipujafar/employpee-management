@@ -1,3 +1,4 @@
+import { Button } from "@material-tailwind/react";
 import "./contract.css";
 const ContractUs = () => {
   return (
@@ -19,8 +20,11 @@ const ContractUs = () => {
                 </div>
                 <div className="space-y-2">
                 <label>Message:</label>
-                <textarea placeholder="Message" className="w-full border border-black rounded p-2"></textarea>
+                <textarea placeholder="Message" rows={5} className="w-full border border-black rounded p-2"></textarea>
                 </div>
+                <Button className="bg-gradient-to-r from-orange-700 to-orange-300">
+                  <input type="submit" value="Send" />
+                </Button>
             </form>
         </div>
         <div className="flex-1">

@@ -22,7 +22,7 @@ const Testimonial = () => {
   const { data: reviews = [] } = useQuery({
     queryKey: ["review"],
     queryFn: async () => {
-      const res = await axiosPublic.get("review.json");
+      const res = await axiosPublic.get("/review");
       return res.data;
     },
   });
@@ -50,8 +50,8 @@ const Testimonial = () => {
         modules={[EffectCoverflow, Pagination,Autoplay]}
         className="mySwiper"
       >
-        {reviews.map((review, inx) => (
-          <SwiperSlide key={inx}>
+        {reviews.map((review) => (
+          <SwiperSlide key={review._id}>
             <Card className="mt-6 max-w-md mx-auto">
               <CardBody>
                 <img src={review.image} alt=""  className="w-20 mx-auto mb-3 rounded-full"/>

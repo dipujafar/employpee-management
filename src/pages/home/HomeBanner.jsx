@@ -12,7 +12,7 @@ import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 
 const HomeBanner = () => {
     return (
-        <div>
+        <div className='z-0'>
               <Swiper
         spaceBetween={30}
         centeredSlides={true}

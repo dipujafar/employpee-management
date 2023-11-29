@@ -32,7 +32,7 @@ const Services = () => {
       <div className=" grid md:grid-cols-3 gap-5"  data-aos="fade-up"
      data-aos-duration="2000">
         {
-          services.map((service,inx)=><ServiceCard key={inx} service={service}></ServiceCard>)
+          services.map((service)=><ServiceCard key={service._id} service={service}></ServiceCard>)
         }
       </div>
 
