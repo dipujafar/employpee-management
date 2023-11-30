@@ -1,0 +1,93 @@
+[
+    {
+      "name": "John Doe",
+      "email": "john.doe@example.com",
+      "role": "Employee",
+      "designation": "Programmer",
+      "verified": false,
+      "bankAccount": "123456789",
+      "salary": 50000
+    },
+    {
+      "name": "Jane Smith",
+      "email": "jane.smith@example.com",
+      "role": "Employee",
+      "designation": "Jr. Developer",
+      "verified": false,
+      "bankAccount": "987654321",
+      "salary": 55000
+    },
+    {
+      "name": "Bob Johnson",
+      "email": "bob.johnson@example.com",
+      "role": "HR",
+      "designation": "Developer",
+      "verified": false,
+      "bankAccount": "456789123",
+      "salary": 60000
+    },
+    {
+      "name": "Alice Williams",
+      "email": "alice.williams@example.com",
+      "role": "Admin",
+      "designation": "Tester",
+      "verified": false,
+      "bankAccount": "789123456",
+      "salary": 70000
+    },
+    {
+      "name": "Charlie Brown",
+      "email": "charlie.brown@example.com",
+      "role": "Employee",
+      "designation": "Designer",
+      "verified": false,
+      "bankAccount": "321654987",
+      "salary": 48000
+    },
+    {
+      "name": "Eva Davis",
+      "email": "eva.davis@example.com",
+      "role": "Employee",
+      "designation": "Frontend Developer",
+      "verified": false,
+      "bankAccount": "654987321",
+      "salary": 52000
+    },
+    {
+      "name": "David Miller",
+      "email": "david.miller@example.com",
+      "role": "Employee",
+      "designation": "Backend Developer",
+      "verified": false,
+      "bankAccount": "987321654",
+      "salary": 58000
+    },
+    {
+      "name": "Grace Wilson",
+      "email": "grace.wilson@example.com",
+      "role": "HR",
+      "designation": "Programmer",
+      "verified": false,
+      "bankAccount": "147258369",
+      "salary": 62000
+    },
+    {
+      "name": "Frank Taylor",
+      "email": "frank.taylor@example.com",
+      "role": "Admin",
+      "designation": "Jr. Developer",
+      "verified": false,
+      "bankAccount": "258369147",
+      "salary": 75000
+    },
+    {
+      "name": "Hannah Brown",
+      "email": "hannah.brown@example.com",
+      "role": "Employee",
+      "designation": "Tester",
+      "verified": false,
+      "bankAccount": "369147258",
+      "salary": 49000
+    }
+  ]
+  

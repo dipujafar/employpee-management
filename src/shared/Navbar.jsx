@@ -73,10 +73,14 @@ export function NavbarDefault() {
 
   const handleLogOut = () =>{
     logOut()
-    .then(()=> toast.success("Successfully Logged Out"))
+    .then(()=>{
+       toast.success("Successfully Logged Out")
+       setShow(false);
+      })
   }
 
   return (
+    <div>
     <Navbar className="mx-auto  px-4 py-2 lg:px-8 lg:py-4">
       <div className="container mx-auto flex items-center justify-between text-blue-gray-900">
         <Typography
@@ -107,12 +111,7 @@ export function NavbarDefault() {
                 <img src={profilePhoto} className="w-16 h-16 rounded-full"></img> 
               }
             </div>
-            <div className={`absolute z-10 bg-blue-300 right-2 flex flex-col gap-2 justify-center duration-1000 items-center rounded w-52 py-5 px-3 ${show? "top-16":"-top-64"}`}>
-              
-            <img src={user?.photoURL} className="w-16 h-16  rounded-full"></img>
-            <h4 className="text-xl font-medium">{user?.displayName}</h4>
-            <Button onClick={handleLogOut}>Logout</Button>
-            </div>
+            
             </>
             
           ) : (
@@ -204,5 +203,14 @@ export function NavbarDefault() {
         </div>
       </Collapse>
     </Navbar>
+    <div className="flex justify-end">
+    <div className={` z-10 bg-blue-300 flex flex-col gap-2 justify-center duration-1000 items-center rounded w-52 py-5 px-3 ${show? "inline-block":"hidden"}`}>
+              
+            <img src={user?.photoURL} className="w-16 h-16  rounded-full"></img>
+            <h4 className="text-xl font-medium">{user?.displayName}</h4>
+            <Button onClick={handleLogOut}>Logout</Button>
+            </div>
+    </div>
+    </div>
   );
 }

@@ -1,5 +1,5 @@
 import { useForm } from "react-hook-form";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import loginImg from "../assets/loginLogo/login.gif";
 import {
   AiOutlineEye,
@@ -16,6 +16,9 @@ const Login = () => {
   const [show, setShow] = useState(false);
   const [error, setError] = useState('')
   const { singInUser } = useAuth();
+  const navigate = useNavigate();
+  const location = useLocation();
+
   const {
     register,
     handleSubmit,
@@ -25,11 +28,11 @@ const Login = () => {
 
   const onSubmit = (data) => {
     const {email,password} = data || {};
-    const navigate = useNavigate();
+    
     singInUser(email, password)
-    .then(result=>{
+    .then(()=>{
       toast.success("Successfully Login");
-      navigate('/')
+      navigate(location.state ? location.state : '/');
       reset();
     })
     .catch(error=>setError(setError(error.message)))

@@ -1,5 +1,5 @@
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AiOutlineBank, AiOutlineMail } from "react-icons/ai";
 import { RiLockPasswordLine } from "react-icons/ri";
 import {BsPeople } from "react-icons/bs";
@@ -10,6 +10,7 @@ import { useState } from "react";
 import { Button } from "@material-tailwind/react";
 import useAuth from "../hook/useAuth";
 import useAxiosPublic from "../hook/useAxiosPublic";
+import { toast } from "react-toastify";
 
 
 // const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
@@ -19,6 +20,7 @@ const Register = () => {
     const {createUser, updateUser} = useAuth();
     const [error,setError] = useState('');
     const axiosPublic = useAxiosPublic();
+    const navigate = useNavigate();
 
     const {
         register,
@@ -42,10 +44,11 @@ const Register = () => {
        const imageURL = res.data.data.display_url;
       
        createUser(email,password)
-       .then(result=>{
+       .then(()=>{
         updateUser(name, imageURL)
         .then(()=>{
-          console.log(result.user);
+         toast.success("Successfully create User");
+         navigate('/');
         })
        })
        .catch(error=>setError(error.message))
@@ -156,7 +159,7 @@ const Register = () => {
                 <option disabled value="default">
                   Select Your Role
                 </option>
-                <option value="user">User</option>
+                <option value="user">Employee</option>
                 <option value="admin">Admin</option>
                 <option value="hr">HR</option>
               </select>
