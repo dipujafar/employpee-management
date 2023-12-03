@@ -6,6 +6,7 @@ import Home from "../pages/home/Home";
 import ContractUs from "../pages/Contract/ContractUs";
 import { DrawerWithNavigation } from "../dashboard/Dashboard";
 import UserTable from "../dashboard/UserTable";
+import PrivateRoute from "./privateRoute";
 
 
 
@@ -34,7 +35,7 @@ const router = createBrowserRouter([
     },
     {
       path: "/dashboard",
-      element: <DrawerWithNavigation></DrawerWithNavigation>,
+      element:<PrivateRoute><DrawerWithNavigation></DrawerWithNavigation></PrivateRoute>,
       children:[
         {
           path:"userTable",
