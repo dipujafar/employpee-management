@@ -12,10 +12,13 @@ import profilePhoto from '../assets/image/profileLogo.png'
 import { useState } from "react";
 import { toast } from "react-toastify";
 
+
+
 export function NavbarDefault() {
   const [openNav, setOpenNav] = React.useState(false);
-  const { user, logOut } = useAuth();
+  const { user, logOut} = useAuth();
     const [show, setShow] = useState(false);
+    
 
   React.useEffect(() => {
     window.addEventListener(
@@ -42,7 +45,7 @@ export function NavbarDefault() {
       </li>
       <li>
         <NavLink
-          to="/dashboard"
+          to={'/dashboard'}
           className={({ isActive, isPending }) =>
             isPending
               ? "bg-orange-200 px-2 py-1 rounded"

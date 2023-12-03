@@ -7,6 +7,7 @@ import ContractUs from "../pages/Contract/ContractUs";
 import { DrawerWithNavigation } from "../dashboard/Dashboard";
 import UserTable from "../dashboard/UserTable";
 import PrivateRoute from "./privateRoute";
+import AllEmployees from "../dashboard/AllEmployees";
 
 
 
@@ -40,6 +41,10 @@ const router = createBrowserRouter([
         {
           path:"userTable",
           element: <UserTable></UserTable>
+        },
+        {
+          path: 'allEmployees',
+          element: <AllEmployees></AllEmployees>
         }
       ]
     }

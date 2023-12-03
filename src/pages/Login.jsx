@@ -27,7 +27,7 @@ const Login = () => {
   } = useForm();
 
   const onSubmit = (data) => {
-    const {email,password} = data || {};
+    const {email, password} = data || {};
     
     singInUser(email, password)
     .then(()=>{

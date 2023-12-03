@@ -3,12 +3,38 @@ import { RxCross2 } from "react-icons/rx";
 import { IoMdCheckmark } from "react-icons/io";
 import { Link } from "react-router-dom";
 import { Button } from "@material-tailwind/react";
+import useAxiosSecure from "../hook/useAxiosSecure";
+import Swal from "sweetalert2";
 
 const UserTable = () => {
-  const { users } = useUser();
+  const { users, refetch } = useUser();
   const employees = users?.filter((user) => (user.role = "Employee"));
+  const axiosSecure = useAxiosSecure();
 
-  console.log(employees);
+  const handleVerification = (id) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't verified this user!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, I want!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        axiosSecure.patch(`/employees/${id}`).then((res) => {
+          if (res.data.modifiedCount) {
+            Swal.fire({
+              title: "Verified!",
+              text: "Your user has been Verified.",
+              icon: "success",
+            });
+            refetch();
+          }
+        });
+      }
+    });
+  };
   return (
     <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
       <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
@@ -56,17 +82,26 @@ const UserTable = () => {
               <td className="px-6 py-4">{employee.bankAccount}</td>
               <td className="px-6 py-4">${employee.salary}</td>
               <td className="px-6 py-4 text-right">
-                {
-                    employee.verified ? <IoMdCheckmark /> : <RxCross2 className="text-2xl text-red-400" />
-                }
+                {employee.verified ? (
+                  <Button>
+                  <IoMdCheckmark  className=" text-2xl text-green-400"/>
+                  </Button>
+                ) : (
+                  <Button onClick={() => handleVerification(employee._id)}>
+                    <RxCross2 className="text-2xl text-red-400" />
+                  </Button>
+                )}
               </td>
               <td className="px-6 py-4">
-                <Button className="bg-gradient-to-r from-orange-700 to-orange-300">Pay</Button>
+                <Button className="bg-gradient-to-r from-orange-700 to-orange-300">
+                  Pay
+                </Button>
               </td>
               <td className="px-6 py-4">
-                <Button className="bg-gradient-to-r from-orange-400 to-orange-700">Details</Button>
+                <Button className="bg-gradient-to-r from-orange-400 to-orange-700">
+                  Details
+                </Button>
               </td>
-
             </tr>
           ))}
         </tbody>

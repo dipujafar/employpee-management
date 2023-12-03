@@ -1,7 +1,6 @@
 import React from "react";
 import {
   Drawer,
-  Button,
   Typography,
   IconButton,
   List,
@@ -10,22 +9,178 @@ import {
 } from "@material-tailwind/react";
 import { NavLink, Outlet } from "react-router-dom";
 import { MdMenu } from "react-icons/md";
-import { FaUsers } from "react-icons/fa6";
+import { FaPaypal, FaUsers } from "react-icons/fa6";
 import { FaHome } from "react-icons/fa";
 import { BiSolidCommentDetail } from "react-icons/bi";
 import useHR from "../hook/useHR";
 import useAdmin from "../hook/useAdmin";
-import useAuth from "../hook/useAuth";
+
 
 export function DrawerWithNavigation() {
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = React.useState(true);
   const openDrawer = () => setOpen(true);
   const closeDrawer = () => setOpen(false);
   const [isHR] = useHR();
   const [isAdmin] = useAdmin();
-  const {user} = useAuth();
   console.log(isHR);
   console.log(isAdmin);
+
+  const navLinks = ()=>{
+    if(isAdmin){
+      return <>
+      <List>
+            <ListItem>
+              <ListItemPrefix>
+                <FaUsers></FaUsers>
+              </ListItemPrefix>
+              <NavLink
+                to="/dashboard/allEmployees"
+                className={({ isActive, isPending }) =>
+                  isPending
+                    ? "bg-orange-200 px-2 py-1 rounded"
+                    : isActive
+                    ? "bg-orange-200 px-2 py-1 rounded"
+                    : ""
+                }
+              >
+                All Employees
+              </NavLink>
+            </ListItem>
+            <ListItem>
+              <ListItemPrefix>
+                <FaHome />
+              </ListItemPrefix>
+              <NavLink
+                to="/"
+                className={({ isActive, isPending }) =>
+                  isPending
+                    ? "bg-orange-200 px-2 py-1 rounded"
+                    : isActive
+                    ? "bg-orange-200 px-2 py-1 rounded"
+                    : ""
+                }
+              >
+                Home
+              </NavLink>
+            </ListItem>
+          </List>
+      </>
+    }
+    else if (isHR){
+      return <>
+       <List>
+              <ListItem>
+                <ListItemPrefix>
+                  <FaUsers></FaUsers>
+                </ListItemPrefix>
+                <NavLink
+                  to="/dashboard/userTable"
+                  className={({ isActive, isPending }) =>
+                    isPending
+                      ? "bg-orange-200 px-2 py-1 rounded"
+                      : isActive
+                      ? "bg-orange-200 px-2 py-1 rounded"
+                      : ""
+                  }
+                >
+                  Employees
+                </NavLink>
+              </ListItem>
+              <ListItem>
+                <ListItemPrefix>
+                  <BiSolidCommentDetail />
+                </ListItemPrefix>
+                <NavLink
+                  to="/dashboard/progress"
+                  className={({ isActive, isPending }) =>
+                    isPending
+                      ? "bg-orange-200 px-2 py-1 rounded"
+                      : isActive
+                      ? "bg-orange-200 px-2 py-1 rounded"
+                      : ""
+                  }
+                >
+                  Progress
+                </NavLink>
+              </ListItem>
+              <ListItem>
+                <ListItemPrefix>
+                  <FaHome />
+                </ListItemPrefix>
+                <NavLink
+                  to="/"
+                  className={({ isActive, isPending }) =>
+                    isPending
+                      ? "bg-orange-200 px-2 py-1 rounded"
+                      : isActive
+                      ? "bg-orange-200 px-2 py-1 rounded"
+                      : ""
+                  }
+                >
+                  Home
+                </NavLink>
+              </ListItem>
+            </List>
+      </>
+    }
+    else{
+      return <>
+       <List>
+              <ListItem>
+                <ListItemPrefix>
+                  <FaPaypal ></FaPaypal>
+                </ListItemPrefix>
+                <NavLink
+                  to="/dashboard/paymentHistory"
+                  className={({ isActive, isPending }) =>
+                    isPending
+                      ? "bg-orange-200 px-2 py-1 rounded"
+                      : isActive
+                      ? "bg-orange-200 px-2 py-1 rounded"
+                      : ""
+                  }
+                >
+                  Payment History
+                </NavLink>
+              </ListItem>
+              <ListItem>
+                <ListItemPrefix>
+                  <BiSolidCommentDetail />
+                </ListItemPrefix>
+                <NavLink
+                  to="/dashboard/workSheet"
+                  className={({ isActive, isPending }) =>
+                    isPending
+                      ? "bg-orange-200 px-2 py-1 rounded"
+                      : isActive
+                      ? "bg-orange-200 px-2 py-1 rounded"
+                      : ""
+                  }
+                >
+                  Work Sheet
+                </NavLink>
+              </ListItem>
+              <ListItem>
+                <ListItemPrefix>
+                  <FaHome />
+                </ListItemPrefix>
+                <NavLink
+                  to="/"
+                  className={({ isActive, isPending }) =>
+                    isPending
+                      ? "bg-orange-200 px-2 py-1 rounded"
+                      : isActive
+                      ? "bg-orange-200 px-2 py-1 rounded"
+                      : ""
+                  }
+                >
+                  Home
+                </NavLink>
+              </ListItem>
+            </List>
+      </>
+    }
+  }
 
   return (
     <React.Fragment>
@@ -64,153 +219,8 @@ export function DrawerWithNavigation() {
           </IconButton>
         </div>
         {
-          user? isHR? 
-          <List>
-          <ListItem>
-            <ListItemPrefix>
-              <FaUsers></FaUsers>
-            </ListItemPrefix>
-            <NavLink
-              to="/dashboard/userTable"
-              className={({ isActive, isPending }) =>
-                isPending
-                  ? "bg-orange-200 px-2 py-1 rounded"
-                  : isActive
-                  ? "bg-orange-200 px-2 py-1 rounded"
-                  : ""
-              }
-            >
-              Employees
-            </NavLink>
-          </ListItem>
-          <ListItem>
-            <ListItemPrefix>
-            <BiSolidCommentDetail />
-            </ListItemPrefix>
-            <NavLink
-              to="/dashboard/progress"
-              className={({ isActive, isPending }) =>
-                isPending
-                  ? "bg-orange-200 px-2 py-1 rounded"
-                  : isActive
-                  ? "bg-orange-200 px-2 py-1 rounded"
-                  : ""
-              }
-            >
-              Progress
-            </NavLink>
-          </ListItem>
-          <ListItem>
-            <ListItemPrefix>
-            <FaHome />
-            </ListItemPrefix>
-            <NavLink
-              to="/"
-              className={({ isActive, isPending }) =>
-                isPending
-                  ? "bg-orange-200 px-2 py-1 rounded"
-                  : isActive
-                  ? "bg-orange-200 px-2 py-1 rounded"
-                  : ""
-              }
-            >
-              Home
-            </NavLink>
-          </ListItem>
-        </List> 
-        :
-        <List>
-        <ListItem>
-          <ListItemPrefix>
-            <FaUsers></FaUsers>
-          </ListItemPrefix>
-          <NavLink
-            to="/dashboard/paymentHistory"
-            className={({ isActive, isPending }) =>
-              isPending
-                ? "bg-orange-200 px-2 py-1 rounded"
-                : isActive
-                ? "bg-orange-200 px-2 py-1 rounded"
-                : ""
-            }
-          >
-           Payment History
-          </NavLink>
-        </ListItem>
-        <ListItem>
-          <ListItemPrefix>
-          <BiSolidCommentDetail />
-          </ListItemPrefix>
-          <NavLink
-            to="/dashboard/workSheet"
-            className={({ isActive, isPending }) =>
-              isPending
-                ? "bg-orange-200 px-2 py-1 rounded"
-                : isActive
-                ? "bg-orange-200 px-2 py-1 rounded"
-                : ""
-            }
-          >
-            Work Sheet
-          </NavLink>
-        </ListItem>
-        <ListItem>
-          <ListItemPrefix>
-          <FaHome />
-          </ListItemPrefix>
-          <NavLink
-            to="/"
-            className={({ isActive, isPending }) =>
-              isPending
-                ? "bg-orange-200 px-2 py-1 rounded"
-                : isActive
-                ? "bg-orange-200 px-2 py-1 rounded"
-                : ""
-            }
-          >
-            Home
-          </NavLink>
-        </ListItem>
-      </List> 
-        :   
-        <List>
-        <ListItem>
-          <ListItemPrefix>
-            <FaUsers></FaUsers>
-          </ListItemPrefix>
-          <NavLink
-            to="/dashboard/allUser"
-            className={({ isActive, isPending }) =>
-              isPending
-                ? "bg-orange-200 px-2 py-1 rounded"
-                : isActive
-                ? "bg-orange-200 px-2 py-1 rounded"
-                : ""
-            }
-          >
-            All User
-          </NavLink>
-        </ListItem>
-        <ListItem>
-          <ListItemPrefix>
-          <FaHome />
-          </ListItemPrefix>
-          <NavLink
-            to="/"
-            className={({ isActive, isPending }) =>
-              isPending
-                ? "bg-orange-200 px-2 py-1 rounded"
-                : isActive
-                ? "bg-orange-200 px-2 py-1 rounded"
-                : ""
-            }
-          >
-            Home
-          </NavLink>
-        </ListItem>
-      </List>   
+          navLinks()
         }
-        
       </Drawer>
       <div>
         <Outlet></Outlet>

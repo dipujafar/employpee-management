@@ -6,7 +6,7 @@ import useAxiosSecure from "./useAxiosSecure";
 const useHR = () => {
   const {user, loading} = useAuth();
     const axiosSecure = useAxiosSecure();
-    const {data: isHR} = useQuery({
+    const {data: isHR, isLoading: hrLoading} = useQuery({
         queryKey: [user?.email, "isHR"],
         enabled: !loading,
         queryFn: async()=>{
@@ -14,7 +14,7 @@ const useHR = () => {
             return res.data?.hr;
         }
     })
-    return [isHR];
+    return [isHR, hrLoading];
 };
 
 export default useHR;

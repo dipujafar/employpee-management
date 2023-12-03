@@ -30,7 +30,8 @@ const Register = () => {
       } = useForm();
 
       const onSubmit = async (data) => {
-       const {name, email, password, account, salary, image} = data || {};
+       const {name, email, password, bankAccount, salary, image, role, designation
+       } = data || {};
         const imageFile = {image: image[0]};
         console.log(imageFile)
        
@@ -47,7 +48,14 @@ const Register = () => {
        .then(()=>{
         updateUser(name, imageURL)
         .then(()=>{
-         toast.success("Successfully create User");
+          const userInfo = {name, email, role, designation, verified: false, bankAccount, salary}
+          axiosPublic.post('/employees',userInfo)
+          .then(res =>{
+            if(res?.data?.insertedId){
+              toast.success("Successfully create User");
+              reset();
+            }
+          })
          navigate('/');
         })
        })
@@ -116,7 +124,7 @@ const Register = () => {
               <input
                 type="type"
                 name="account"
-                {...register("account")}
+                {...register("bankAccount")}
                 placeholder="Your Bank Account No."
                 className="w-3/4 mx-auto py-1 px-2 bg-transparent border-b border-b-orange-400"
               />
@@ -159,9 +167,9 @@ const Register = () => {
                 <option disabled value="default">
                   Select Your Role
                 </option>
-                <option value="user">Employee</option>
-                <option value="admin">Admin</option>
-                <option value="hr">HR</option>
+                <option value="Employee">Employee</option>
+                <option value="Admin">Admin</option>
+                <option value="HR">HR</option>
               </select>
             </div>
             {errors.role?.type === "required" && <span className="text-red-400 ml-10">Role is required</span>}

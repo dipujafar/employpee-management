@@ -22,9 +22,9 @@ const AuthProvide = ({children}) => {
 
     const singInUser = (email, password) =>{
         setLoading(true);
-        return signInWithEmailAndPassword(auth,email,password);
+        return signInWithEmailAndPassword(auth, email, password)
     };
-
+ 
     const updateUser= (name, photo)=>{
        return updateProfile(auth.currentUser, {
             displayName: name, photoURL: photo
