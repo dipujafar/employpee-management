@@ -93,9 +93,17 @@ const UserTable = () => {
                 )}
               </td>
               <td className="px-6 py-4">
-                <Button className="bg-gradient-to-r from-orange-700 to-orange-300">
+                {
+                  employee.verified 
+                  ?
+                <Button  className={`bg-gradient-to-r from-orange-700 to-orange-300`}>
                   Pay
                 </Button>
+                :
+                <Button disabled className={`bg-gradient-to-r from-orange-700 to-orange-300`}>
+                  Pay
+                </Button>
+                }
               </td>
               <td className="px-6 py-4">
                 <Button className="bg-gradient-to-r from-orange-400 to-orange-700">

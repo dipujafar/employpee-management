@@ -32,8 +32,8 @@ const Login = () => {
     singInUser(email, password)
     .then(()=>{
       toast.success("Successfully Login");
-      navigate(location.state ? location.state : '/');
       reset();
+      navigate(location.state ? location.state : '/');
     })
     .catch(error=>setError(setError(error.message)))
   };
