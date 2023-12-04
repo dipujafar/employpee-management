@@ -11,6 +11,8 @@ import AllEmployees from "../dashboard/AllEmployees";
 import PaymentHistory from "../dashboard/PaymentHistory";
 import WorkSheet from "../dashboard/workSheet";
 import ErrorPage from "../pages/ErrorPage";
+import EmployeesProgress from "../dashboard/EmployeesProgress";
+import Payment from "../pages/Payment";
 
 
 
@@ -60,6 +62,14 @@ const router = createBrowserRouter([
         {
           path: "workSheet",
           element: <WorkSheet></WorkSheet>
+        },
+        {
+          path: "progress",
+          element: <EmployeesProgress></EmployeesProgress>
+        },
+        {
+          path: "payment",
+          element: <Payment></Payment>
         }
       ]
     }

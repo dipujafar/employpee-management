@@ -15,7 +15,7 @@ const WorkSheet = () => {
   const { workData, refetch } = useWork();
   const handleWork = (e) => {
     e.preventDefault();
-    
+
     const form = e.target;
     const task = form.task?.value;
     const workHours = form.workHours?.value;
@@ -24,6 +24,7 @@ const WorkSheet = () => {
       workHours,
       startDate,
       email: user?.email,
+      name: user?.displayName
     };
     axiosSecure.post("/work", workData).then((res) => {
       if (res.data.insertedId) {

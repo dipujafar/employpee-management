@@ -1,3 +1,4 @@
+import { Button } from "@material-tailwind/react";
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 
 
@@ -22,6 +23,7 @@ const CheckOutFrom = () => {
     return (
        <form onSubmit={handleSubmit}>
         <CardElement
+        className="mb-3"
         options={{
           style: {
             base: {
@@ -37,9 +39,9 @@ const CheckOutFrom = () => {
           },
         }}
       />
-      <button type="submit" disabled={!stripe}>
+      <Button type="submit" disabled={!stripe}>
         Pay
-      </button>
+      </Button>
        </form>
     );
 };

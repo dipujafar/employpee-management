@@ -96,9 +96,11 @@ const UserTable = () => {
                 {
                   employee.verified 
                   ?
+                  <Link to='/dashboard/payment'>
                 <Button  className={`bg-gradient-to-r from-orange-700 to-orange-300`}>
                   Pay
                 </Button>
+                </Link>
                 :
                 <Button disabled className={`bg-gradient-to-r from-orange-700 to-orange-300`}>
                   Pay
