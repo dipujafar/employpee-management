@@ -33,7 +33,6 @@ const Register = () => {
        const {name, email, password, bankAccount, salary, image, role, designation
        } = data || {};
         const imageFile = {image: image[0]};
-        console.log(imageFile)
        
 
         const res = await axiosPublic.post(image_hosting_api, imageFile,{

@@ -8,7 +8,6 @@ const useUser = () => {
         queryKey: ["user"],
         queryFn: async()=>{
             const res = await axiosSecure.get("/employees");
-            console.log(res.data)
             return res.data;
         }
     })

@@ -26,7 +26,6 @@ const Testimonial = () => {
       return res.data;
     },
   });
-  console.log(reviews);
   return (
     <div className="mt-10">
         <SectionTitle heading="testimonials" subHeading="What Our Client Say"></SectionTitle>

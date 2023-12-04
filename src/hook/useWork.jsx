@@ -10,8 +10,7 @@ const useWork = () => {
         queryKey: [user?.email, "work"],
         enabled: !loading,
         queryFn: async()=>{
-           const res = await axiosSecure.get(`/work?email=${user?.email}`)
-           console.log(res.data);
+           const res = await axiosSecure.get(`/work?email=${user?.email}`);
            return res.data;
         }
     })

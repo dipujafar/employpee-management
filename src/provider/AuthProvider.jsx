@@ -40,7 +40,6 @@ const AuthProvide = ({children}) => {
        const unsubscribe = onAuthStateChanged(auth, currentUser=>{
             setUser(currentUser);
             if(currentUser){
-                console.log(currentUser)
                 const userInfo = {email: currentUser.email};
                 axiosSecure.post('/jwt',userInfo)
                 .then(res=>{

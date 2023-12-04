@@ -22,8 +22,6 @@ export function DrawerWithNavigation() {
   const closeDrawer = () => setOpen(false);
   const [isHR] = useHR();
   const [isAdmin] = useAdmin();
-  console.log(isHR);
-  console.log(isAdmin);
 
   const navLinks = ()=>{
     if(isAdmin){

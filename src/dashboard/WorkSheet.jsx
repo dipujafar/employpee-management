@@ -13,10 +13,9 @@ const WorkSheet = () => {
   const { user } = useAuth();
   const axiosSecure = useAxiosSecure();
   const { workData, refetch } = useWork();
-  console.log(workData);
-
   const handleWork = (e) => {
     e.preventDefault();
+    
     const form = e.target;
     const task = form.task?.value;
     const workHours = form.workHours?.value;
