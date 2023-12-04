@@ -8,6 +8,9 @@ import { DrawerWithNavigation } from "../dashboard/Dashboard";
 import UserTable from "../dashboard/UserTable";
 import PrivateRoute from "./privateRoute";
 import AllEmployees from "../dashboard/AllEmployees";
+import PaymentHistory from "../dashboard/PaymentHistory";
+import WorkSheet from "../dashboard/workSheet";
+import ErrorPage from "../pages/ErrorPage";
 
 
 
@@ -15,6 +18,7 @@ const router = createBrowserRouter([
     {
       path: "/",
       element: <Root></Root>,
+      errorElement: <ErrorPage></ErrorPage>,
       children: [
         {
           path: "/",
@@ -28,15 +32,18 @@ const router = createBrowserRouter([
     },
     {
         path: '/register',
-        element: <Register></Register>
+        element: <Register></Register>,
+        errorElement: <ErrorPage></ErrorPage>
     },
     {
       path: '/login',
-      element: <Login></Login>
+      element: <Login></Login>,
+      errorElement: <ErrorPage></ErrorPage>
     },
     {
       path: "/dashboard",
       element:<PrivateRoute><DrawerWithNavigation></DrawerWithNavigation></PrivateRoute>,
+      errorElement: <ErrorPage></ErrorPage>,
       children:[
         {
           path:"userTable",
@@ -45,6 +52,14 @@ const router = createBrowserRouter([
         {
           path: 'allEmployees',
           element: <AllEmployees></AllEmployees>
+        },
+        {
+          path: "paymentHistory",
+          element: <PaymentHistory></PaymentHistory>
+        },
+        {
+          path: "workSheet",
+          element: <WorkSheet></WorkSheet>
         }
       ]
     }
