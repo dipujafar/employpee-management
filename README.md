@@ -1,8 +1,9 @@
-# React + Vite
+- About this Project
+- This Web Site create for Employee management of a company.
+- There are a home page and contract page.
+- There are firebase authentication system.
+- This Web site Has 3 type of Role Admin, HR and Employee.    
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## [Live Link](https://employees-management-2e4f8.firebaseapp.com/)
+-- https://employees-management-2e4f8.firebaseapp.com/
 
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
